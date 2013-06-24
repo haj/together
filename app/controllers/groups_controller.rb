@@ -1,4 +1,3 @@
-# TODO: move to together platform
 class GroupsController < ApplicationController
   # User groups
   def index

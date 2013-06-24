@@ -15,3 +15,6 @@ gem 'debugger'
 gem 'factory_girl_rails'
 gem 'faker'
 
+gem 'letter_opener'
+
+gem 'haml'

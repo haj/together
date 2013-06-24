@@ -1,3 +1,5 @@
+require 'devise'
+
 module Together
   extend ActiveSupport::Autoload
 end

@@ -7,8 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
 
 <%= yield %>
+  
+  <%= form_tag destroy_user_session_path, method: :delete do %>
+    <%= button_tag type: 'submit' do %>
+      sign out
+    <% end %>    
+  <% end %>
 
 </body>
 </html>
