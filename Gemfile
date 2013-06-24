@@ -11,4 +11,7 @@ gemspec
 # your gem to rubygems.org.
 
 # To use debugger
-# gem 'debugger'
+gem 'debugger'
+gem 'factory_girl_rails'
+gem 'faker'
+

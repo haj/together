@@ -1,3 +1,5 @@
 = Together
 
-This project rocks and uses MIT-LICENSE.
+Together is a Collaboration Platform. It will handle your users, signup, groups, memberships and invitations.
+
+It is a Rails Engine.
