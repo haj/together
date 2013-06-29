@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
 
   has_many :memberships, inverse_of: :user, dependent: :destroy
   has_many :groups, through: :memberships
+
+  def email_domain
+    Mail::Address.new(email).domain
+  end
 end

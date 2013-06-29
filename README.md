@@ -1,6 +1,6 @@
 = Together
 
-Together is a Collaboration Platform. It will handle your users, signup, groups, memberships and invitations.
+Together is a Multi-tennant collaboration Platform. It will handle your users, signup, groups, memberships and invitations. All data scoped to a domain (as in dns domain) based on signed-in user's email. It uses postgres schema's
 
 It is a Rails Engine.
 
@@ -15,3 +15,6 @@ To use:
 - set the default host for action mailer:
 
     config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+== Multi-tennant
+

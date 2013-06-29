@@ -18,3 +18,5 @@ gem 'faker'
 gem 'letter_opener'
 
 gem 'haml'
+
+gem 'pg'
