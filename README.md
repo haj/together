@@ -1,4 +1,4 @@
-![Together](raw.github.com/lab01nl/together/together.png)
+![Together](together.png)
 
 Together is a Multi-tennant collaboration Platform. It will handle your users, signup, groups, memberships and invitations. It is meant as a platform for apps that allow users of a company or organization to form groups and collaborate.
 
