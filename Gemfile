@@ -20,3 +20,5 @@ gem 'letter_opener'
 gem 'haml'
 
 gem 'pg'
+
+gem 'shoulda-context'

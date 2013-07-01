@@ -14,7 +14,7 @@ namespace :tenants do
       desc 'Create a db/schema.rb file that can be portably used against any DB supported by AR'
       task :dump => [:environment, 'db:load_config', 'tenants:db:assert_supported'] do
         require 'active_record/schema_dumper'
-        filename = ENV['TENANT_SCHEMA'] || File.join(ActiveRecord::Tasks::DatabaseTasks.db_dir, 'tenant_schema.rb')
+        filename = ENV['TENANT_SCHEMA'] || Tenant.tenant_schema_path
         File.open(filename, "w:utf-8") do |file|
           Tenant.with_root_tenant_schema do
             ActiveRecord::SchemaDumper.dump(ActiveRecord::Base.connection, file)
@@ -25,7 +25,7 @@ namespace :tenants do
 
       desc 'Load a schema.rb file into the database'
       task :load => [:environment, 'db:load_config', 'tenants:db:assert_supported'] do
-        file = ENV['TENANT_SCHEMA'] || File.join(ActiveRecord::Tasks::DatabaseTasks.db_dir, 'tenant_schema.rb')
+        file = ENV['TENANT_SCHEMA'] || Tenant.tenant_schema_path
         if File.exists?(file)
           Tenant.for_each_schema do
             load(file)

@@ -27,6 +27,9 @@ module Together
       connection.execute sql
     end
 
+    def delete_schema(name)
+    end
+
     def schemas
       sql = "SELECT nspname FROM pg_namespace WHERE nspname !~ '^pg_.*'"
       connection.query(sql).flatten

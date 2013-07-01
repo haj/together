@@ -8,7 +8,7 @@ class Tenant < ActiveRecord::Base
   def create_schema
     schema_tool.create_schema(schema)
     scope_schema do
-      load File.join(ActiveRecord::Tasks::DatabaseTasks.db_dir, 'tenant_schema.rb')
+      load Tenant.tenant_schema_path
     end
   end
 
@@ -18,7 +18,11 @@ class Tenant < ActiveRecord::Base
   DEFAULT_SEARCH_PATH = ['public']
 
   def self.with_root_tenant_schema &block
-    schema_tool.create_schema(ROOT_TENANT_SCHEMA) unless schema_tool.schema_exists?(ROOT_TENANT_SCHEMA)
+    # If no root tenant schema exists, create it
+    unless schema_tool.schema_exists?(ROOT_TENANT_SCHEMA)
+      schema_tool.create_schema(ROOT_TENANT_SCHEMA) 
+    end
+    
     schema_tool.with_search_path(ROOT_TENANT_SCHEMA, &block)
   end
 
@@ -42,6 +46,14 @@ class Tenant < ActiveRecord::Base
 
   def self.schema_tool
     Together::SchemaTool.new(connection)
+  end
+
+  def self.tenant_schema_path
+    File.join(Rails.application.config.paths["db"].first, 'tenant_schema.rb')
+  end
+
+  def self.tenant_schema_file_exists?
+    File.exist? tenant_schema_path
   end
 
   def schema_tool

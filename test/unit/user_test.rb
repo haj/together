@@ -1,9 +1,9 @@
 require 'test_helper'
 
-describe User do
-  it "should creat" do
-    result = create(:group)
+class UserTest < ActiveSupport::TestCase
+  should "create" do
+    result = create(:user)
 
-    assert_kind_of Group, result
+    assert_kind_of User, result
   end
 end

@@ -91,6 +91,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.0.4)
+    shoulda-context (1.1.2)
     sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -122,5 +123,6 @@ DEPENDENCIES
   haml
   letter_opener
   pg
+  shoulda-context
   sqlite3
   together!
