@@ -1,12 +1,14 @@
-= Together
+![Together](raw.github.com/lab01nl/together/together.png)
 
-Together is a Multi-tennant collaboration Platform. It will handle your users, signup, groups, memberships and invitations. All data scoped to a domain (as in dns domain) based on signed-in user's email. It uses postgres schema's
+Together is a Multi-tennant collaboration Platform. It will handle your users, signup, groups, memberships and invitations. It is meant as a platform for apps that allow users of a company or organization to form groups and collaborate.
 
-It is a Rails Engine.
+You can choose to scope any or all data to a domain (as in DNS domain) based on current user's email. New users that sign up will only see data that corresponds to their email domamin.
 
-== Devise
+It is a Rails Engine. It is just started, but we have big plans for it. If you're interested, leave your email adres here: http://together.launchrock.com/ and we'll keep you updated.
 
-Together is based on devise. It comes with a default configuration and migration for devise specifically for collaboration platforms. It requires mostly the same stuff.
+## Devise
+
+Together's signup and authentication is built on devise. It currently comes with a default configuration and migration for devise tailored to the platform. It requires mostly the same stuff.
 
 To use:
 
@@ -16,5 +18,6 @@ To use:
 
     config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
-== Multi-tennant
+## Multi-tenant
 
+When a user signs up through devise, together will create a new tenant for his or her e-mail domain. Groups and memberships are private to that tenant. A tenant is a record and a postgresql schema. Private models work exactly like normal models, except that you only create tables for them in certain schemas.
