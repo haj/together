@@ -16,3 +16,7 @@ class ActiveSupport::TestCase
     assert_equal *collections.map(&:to_set)
   end
 end
+
+class ActionController::TestCase
+  include Devise::TestHelpers
+end

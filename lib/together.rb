@@ -4,6 +4,8 @@ module Together
   extend ActiveSupport::Autoload
 
   autoload :SchemaTool
+  autoload :ActionControllerExtensions
+  
 end
 
 require 'together/engine'

@@ -5,6 +5,8 @@ FactoryGirl.define do
     fullname { Faker::Name.name }
     password { 'test_password' }
     password_confirmation { 'test_password' }
+
+    confirmed_at { 1.hour.ago }
   end
 
 end

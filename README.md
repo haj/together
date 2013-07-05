@@ -1,8 +1,8 @@
 ![Together](together.png)
 
-Together is a Multi-tennant collaboration Platform. It will handle your users, signup, groups, memberships and invitations. It is meant as a platform for apps that allow users of a company or organization to form groups and collaborate.
+Together is a Multi-tennant collaboration Platform. It will handle your users, signup, groups, memberships and invitations. It is meant as a platform for apps that allow users of a company or organization to easily find each other on a private platform, form groups and collaborate.
 
-You can choose to scope any or all data to a domain (as in DNS domain) based on current user's email. New users that sign up will only see data that corresponds to their email domamin.
+You can choose to scope any or all data to a domain (as in DNS domain) based on current user's email. New users that sign up will only see the data that corresponds to their email domain.
 
 It is a Rails Engine. It is just started, but we have big plans for it. If you're interested, leave your email adres here: http://together.launchrock.com/ and we'll keep you updated.
 

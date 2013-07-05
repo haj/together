@@ -11,7 +11,7 @@ module Together
     end
 
     def set_search_path *names
-      connection.schema_search_path = names.join(',')
+      connection.schema_search_path = names.map { |name| connection.quote_column_name(name) }.join(',')
     end
 
     def with_search_path *names
@@ -23,7 +23,7 @@ module Together
     end
 
     def create_schema(name)
-      sql = %{CREATE SCHEMA "#{name}"}
+      sql = %{CREATE SCHEMA #{connection.quote_column_name(name)}}
       connection.execute sql
     end
 
@@ -44,5 +44,14 @@ module Together
         raise NotImplementedError, "Together requires that you use postgresql for this connection"
       end
     end
+
+    VALID_HOSTNAME_PATTERN = /\A(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])\Z/
+
+    def self.name_for_domain domain
+      raise ArgumentError, "invalid domain name" unless domain =~ VALID_HOSTNAME_PATTERN
+
+      domain.gsub('.', '_')
+    end
+
   end
 end

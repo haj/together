@@ -1,8 +1,3 @@
-# desc "Explaining what the task does"
-# task :together do
-#   # Task goes here
-# end
-
 namespace :tenants do
   db_namespace = namespace :db do
     desc 'Checks if using postgresql'

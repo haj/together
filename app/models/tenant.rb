@@ -6,7 +6,7 @@ class Tenant < ActiveRecord::Base
   after_create :create_schema
 
   def create_schema
-    schema_tool.create_schema(schema)
+    schema_tool.create_schema(schema) unless schema_tool.schema_exists?(schema)
     scope_schema do
       load Tenant.tenant_schema_path
     end
