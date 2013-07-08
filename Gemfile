@@ -1,24 +1,24 @@
 source "https://rubygems.org"
 
-# Declare your gem's dependencies in together.gemspec.
-# Bundler will treat runtime dependencies like base dependencies, and
-# development dependencies will be added by default to the :development group.
 gemspec
 
-# Declare any dependencies that are still in development here instead of in
-# your gemspec. These might include edge Rails or gems from your path or
-# Git. Remember to move these dependencies to your gemspec before releasing
-# your gem to rubygems.org.
+# ===== Testing =====
 
-# To use debugger
 gem 'debugger'
 gem 'factory_girl_rails'
 gem 'faker'
+gem 'pg'
+gem 'shoulda-context'
+
+# ===== Dummy app =====
 
 gem 'letter_opener'
-
 gem 'haml'
+gem 'jquery-rails'
+gem 'sass-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'bootstrap-sass'
 
-gem 'pg'
-
-gem 'shoulda-context'
+# Angular:
+gem 'angular-rails'
+gem 'angularjs-rails-resource', '~> 0.2.0'

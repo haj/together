@@ -37,8 +37,7 @@ class GroupsControllerTest < ActionController::TestCase
         get :index, format: :json
 
         response = JSON.parse(@response.body)
-        assert_equal 1, response.count
-        assert_equal @group.id, response.first["id"]
+        assert_equal @group.id, response["groups"].first["id"]
       end
 
       should "show" do

@@ -18,6 +18,8 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 4.0.0.rc2"
   s.add_dependency "devise", "~> 3.0.0.rc"
+  s.add_dependency "active_model_serializers"
+
 
   s.add_development_dependency "sqlite3"
 end

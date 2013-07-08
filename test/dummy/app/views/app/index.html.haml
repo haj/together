@@ -1,0 +1,34 @@
+%div(ng-app="dummy")
+  %script(type="text/ng-template" id="group.html")
+    %h2 {{group.name}}
+
+  %script(type="text/ng-template" id="join_group.html")
+    %h2 Join Group
+
+    %form.form-horizontal(ng-submit="submit()")
+      %legend Join group
+      .control-group
+        %label.control-label Select group
+        .controls
+          %select(ng-model="newMembership.groupId")
+            %option(ng-repeat="group in otherGroups" value="{{group.id}}")
+              {{group.name}}
+
+      .form-actions
+        %button.btn.btn-primary(type="submit") Save
+        %a.btn(href="#") Cancel
+
+  .row(ng-controller="MainCtrl")
+    .span4
+
+      %ul.nav.nav-pills.nav-stacked
+        %li(ng-repeat="group in myGroups")
+          %a(href="#/groups/{{group.id}}")
+            {{group.name}}
+
+      %a.btn(href="#/join_group")
+        %i.icon-plus-sign
+        Join Group
+
+    .span8
+      %div(ng-view)
