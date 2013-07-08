@@ -1,0 +1,12 @@
+- content_for :content do
+  .stage
+    .center-stage
+      .logo
+        = image_tag 'logo.png'
+
+      = render 'messages'
+
+      = yield
+
+
+= render template: "layouts/application"

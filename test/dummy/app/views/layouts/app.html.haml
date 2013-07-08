@@ -1,0 +1,14 @@
+- content_for :head do
+  %meta{ name: "user_id", content: current_user.id }
+
+- content_for :content do
+  .container
+    %h1 Welcome to the dummy app!
+
+    %p Here you can see how groups work
+
+    #app
+
+  = yield
+
+= render template: "layouts/application"

@@ -1,6 +1,8 @@
 class HomeController < ApplicationController
-  before_filter :authenticate_user!
-
+  layout 'landing'
+  
+  skip_before_filter :authenticate_user!
+  
   def index
   end
 end

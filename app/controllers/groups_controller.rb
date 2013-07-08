@@ -1,8 +1,11 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :edit, :update, :destroy]
+  before_action :set_group, only: [:show, :update, :destroy]
 
+  # GET groups.json
+  #   scope=(my_groups|other_groups)
+  #   ids=<ids>
   def index
-    @groups = Group.all
+    @groups = group_scope
 
     respond_to do |format|
       format.json { render json: @groups }
@@ -56,5 +59,14 @@ class GroupsController < ApplicationController
 
   def group_params
     params.require(:group).permit(:name)
+  end
+
+  # TODO: ids param
+  def group_scope
+    if params[:scope] && %w(my_groups other_groups).include?(params[:scope])
+      Group.send(params[:scope], current_user)
+    else
+      Group.scoped
+    end
   end
 end

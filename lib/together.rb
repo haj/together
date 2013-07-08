@@ -1,4 +1,5 @@
 require 'devise'
+require 'active_model_serializers'
 
 module Together
   extend ActiveSupport::Autoload
