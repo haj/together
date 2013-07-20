@@ -48,6 +48,10 @@ class Tenant < ActiveRecord::Base
     Together::SchemaTool.new(connection)
   end
 
+  def schema_tool
+    self.class.schema_tool
+  end
+
   def self.tenant_schema_path
     File.join(Rails.application.config.paths["db"].first, 'tenant_schema.rb')
   end
@@ -56,7 +60,11 @@ class Tenant < ActiveRecord::Base
     File.exist? tenant_schema_path
   end
 
-  def schema_tool
-    self.class.schema_tool
+  def self.current_tenant
+    name_array = (schema_tool.search_path_names - DEFAULT_SEARCH_PATH)
+
+    raise "Don't know which schema: #{name_array}" if name_array.count > 1
+
+    find_by_schema(name_array.first)
   end
 end

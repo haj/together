@@ -6,6 +6,8 @@ module Together
       helper_method :current_tenant
     end
     
+    protected
+    
     # Get current tenant, overwrite this in a controller to use different strategy
     def current_tenant
       Tenant.find_by_domain! current_user.email_domain

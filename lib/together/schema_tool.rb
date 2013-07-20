@@ -14,6 +14,11 @@ module Together
       connection.schema_search_path = names.map { |name| connection.quote_column_name(name) }.join(',')
     end
 
+    # Returns search path names array without quotes
+    def search_path_names
+      search_path.split(',').map {|name| name.gsub(/(\A\"|\"\Z)/, '') } # TODO: maybe find more elegant way?
+    end
+
     def with_search_path *names
       original_search_path = search_path
       set_search_path *names
