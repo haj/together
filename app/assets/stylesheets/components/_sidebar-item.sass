@@ -1,0 +1,28 @@
+// sidebar item with icon
+
+.sidebar-item
+  color: $textColor
+  text-decoration: none
+  display: block
+  margin-bottom: 10px
+  
+  @include clearfix
+
+  .item-visual
+    float: left
+    margin-right: $gridSize
+  
+  .item-body
+    h4
+      margin: 0 0 5px
+      font-size: $baseFontSize
+      font-weight: normal
+
+  &:hover, &:focus
+    text-decoration: none
+    background-color: $grayLighter
+
+  &.active 
+    color: $white
+    text-shadow: 0 -1px 0 rgba(0,0,0,.2)
+    background-color: $blueLight

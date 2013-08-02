@@ -11,24 +11,10 @@ user.with_tenant_scope_schema do
     name: 'Testgroup',
     user_ids: [user.id]
   )
-  Group.create(
-    name: 'Testgroup2',
-    user_ids: [user.id]
-  )
 
-  Group.create(
-    name: 'Join here',
-  )
-
-  Group.create(
-    name: 'Or join this one',
-  )
-
-  Group.create(
-    name: 'Or join this one2',
-  )
-
-  Group.create(
-    name: 'Or join this one3',
-  )
+  10.times do |i|
+    Group.create!(
+      name: "join me! #{i+2}",
+    )
+  end
 end

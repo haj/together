@@ -1,0 +1,77 @@
+- content_for :head do
+  %meta{ name: "user_id", content: current_user.id }
+
+%body.app
+  = render 'messages'
+
+  .container(ng-app="lab01Core")
+    - # ===== Main =====
+
+    .row.main-row(ng-controller="MainCtrl")
+      .span3.sidebar
+
+        %a.sidebar-item
+          .item-visual.item-thumb.large
+            %img(src="http://www.gravatar.com/avatar/{{me.emailMd5}}")
+          .item-body
+            %h4 {{me.email}}
+
+        .sidebar-group
+          %h3.group-title
+            Groups
+
+          .group-body
+            %a.sidebar-item(ng-repeat="group in myGroups" href="#/groups/{{group.id}}" active-link="")
+              .item-visual.item-thumb
+                %i.icon-star
+              .item-body
+                %h4 {{group.name}}
+
+            %a.sidebar-item(href="#/memberships/new" active-link="")
+              .item-visual.item-thumb
+                %i.icon-plus-sign
+              .item-body
+                %h4 New or Join Group
+
+      .span9.main-content
+        %div(ng-view)
+
+    - # ===== Group =====
+    
+    %script(type="text/ng-template" id="group.html")
+      .navbar
+        .navbar-inner
+          .brand {{group.name}}
+
+      %section.section
+        %header.section-header
+          %h3
+            .item-thumb.inline
+              %i.icon-group
+            Members
+
+        %p
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+      = render 'group_content'
+
+    - # ===== Join =====
+
+    %script(type="text/ng-template" id="memberships.new.html")
+      .navbar
+        .navbar-inner
+          .brand Join group
+
+      %form.form-horizontal(ng-submit="submit()")
+        .control-group
+          %label.control-label Select group
+          .controls
+            %select(ng-model="newMembership.groupId")
+              %option(ng-repeat="group in otherGroups" value="{{group.id}}")
+                {{group.name}}
+
+        .form-actions
+          %button.btn.btn-primary(type="submit" ng-disabled="isDisabled") Save
+          %a.btn(href="#" ng-disabled="isDisabled") Cancel
+
+  = javascript_include_tag "application", "data-turbolinks-track" => true

@@ -1,0 +1,9 @@
+!!!5
+
+%html
+  %head
+    %title Lab01 - core
+    = stylesheet_link_tag    "application", :media => "all"
+    = csrf_meta_tags
+    = yield(:head)
+  = content_for?(:content) ? yield(:content) : yield
