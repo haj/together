@@ -26,8 +26,14 @@ class Tenant < ActiveRecord::Base
     schema_tool.with_search_path(ROOT_TENANT_SCHEMA, &block)
   end
 
+  def search_path; [schema] + DEFAULT_SEARCH_PATH; end
+
   def scope_schema &block
-    schema_tool.with_search_path schema, *DEFAULT_SEARCH_PATH, &block
+    if block.nil?
+      schema_tool.set_search_path(*search_path)
+    else
+      schema_tool.with_search_path *search_path, &block
+    end
   end
 
   def self.for_each_schema &block

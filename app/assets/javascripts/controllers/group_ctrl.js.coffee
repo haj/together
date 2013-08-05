@@ -1,5 +1,5 @@
-lab01Core.controller 'GroupCtrl', ['$scope', '$q', 'Group', '$routeParams', '$location', 
-  (($scope, $q, Group, $routeParams, $location) ->
+lab01Core.controller 'GroupCtrl', ['$scope', 'Group', '$routeParams', '$location', 
+  (($scope, Group, $routeParams, $location) ->
     $scope.path = $location.path()
 
     getGroup = Group.get($routeParams.groupId).then (value) ->
